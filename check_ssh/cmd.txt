@@ -1,0 +1,3 @@
+cat gameserver.txt | shyaml keys
+cat gameserver.txt | shyaml keys shenyu
+cat gameserver.txt | shyaml get-value shenyu.server

@@ -1,0 +1,21 @@
+shenyu:
+  server:
+    192.168.0.1
+    192.168.0.3
+  mail:
+    1@xx.com
+
+tiankongzhimen:
+  server:
+    127.0.0.1
+    127.0.0.2
+  mail:
+    2@xx.com
+
+shaqi:
+  server:
+    172.16.0.1
+    172.16.0.2
+  mail:
+    3@xx.com
+

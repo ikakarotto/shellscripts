@@ -1,0 +1,1 @@
+Test whether the ssh connection is successful, and then send an email to notify the admin. 
