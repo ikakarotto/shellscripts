@@ -15,10 +15,9 @@ def get_md5(argv):
             fb.close()
             print(md5 + ' ' + filename)
         else:
-            print(filename + 'no such file.')
+            print(filename + ' no such file.')
 
 def check_md5(md5file):
-    
     if os.path.isfile(md5file):
         pass
     else:
