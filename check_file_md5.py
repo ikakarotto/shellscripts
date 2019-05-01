@@ -15,15 +15,15 @@ def get_md5(argv):
             fb.close()
             print(md5 + ' ' + filename)
         else:
-            print(filename + ' no such file.')
+            print('< ' + filename + ' > No such file.')
 
 def check_md5(md5file):
+    
     if os.path.isfile(md5file):
         pass
     else:
         print('md5file not found.')
         sys.exit(1)
-    
     
     for line in open(md5file, 'r').readlines():
         if len(line.split()) == 2:
