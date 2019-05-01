@@ -24,7 +24,7 @@ for line in open(md5file, 'r').readlines():
         filename = line.split()[1]
         # print(line.strip())
 
-	if os.path.isfile(filename):
+        if os.path.isfile(filename):
             fb = open(filename,'rb')
             md5 = hashlib.md5(fb.read()).hexdigest()
             fb.close()
