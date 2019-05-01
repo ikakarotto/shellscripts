@@ -1,4 +1,4 @@
-# coding: utf8
+# coding: utf-8
 '''
 用于检查文件md5是否正确,类似linux下md5sum -c md5.txt的功能
 '''
