@@ -22,6 +22,15 @@ BAKDIR="/home/baksql"
 IgnoreDB='information_schema|#mysql50|lost\+found|performance_schema|test'
 DB=`$MYSQL -u$DBuser -p$DBpass -ss -e "SHOW DATABASES;"| egrep -v ${IgnoreDB}`
 dump_opts="--skip-opt --extended-insert=false --add-drop-table --create-options --disable-keys --quick --triggers=false --hex-blob --single-transaction --routines "
+# dump_opts="--skip-opt --extended-insert=true --add-drop-table --create-options --disable-keys --quick --triggers=false --hex-blob --single-transaction --routines --master-data=2 --set-gtid-purged=OFF"
+
+# 只備份表結構（-B會自動加上USE database_name語句）
+# --compact --skip-opt --create-options --no-create-db --add-drop-database=false --add-drop-table=false --triggers=true --routines -d database_name | sed 's/AUTO_INCREMENT=[0-9]*\s*//g'
+# --compact --skip-opt --create-options --no-create-db --add-drop-database=false --add-drop-table=false --triggers=true --routines -d -B database_name | sed 's/AUTO_INCREMENT=[0-9]*\s*//g'
+
+# 只備份表數據
+# --skip-opt --extended-insert --quick --triggers=false --hex-blob --single-transaction --compact -t database_name table_name
+
 
 # 記錄備份時間日誌
 writeLog ()
