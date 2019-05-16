@@ -1,0 +1,33 @@
+#!/bin/bash
+<< Mark
+Last Modify: 2018/11/08
+Author: zhoudehai
+QQ: 
+Email: 
+Description: 备份zabbix数据库（不备份告警和监控数据）
+Mark
+
+MYSQL=/usr/local/mysql/bin/mysql
+MYSQLDUMP=/usr/local/mysql/bin/mysqldump
+DBuser=zabbix
+DBpass=233233
+
+IgnoreTables="alerts|events|history|history_str|history_text|history_uint|trends|trends_uint"
+<<Mark
+告警记录	alerts
+审核日志	auditlog
+zabbix事件	events
+历史数据	history
+历史数据	history_str
+历史数据	history_text
+历史数据	history_uint
+趋势数据	trends
+趋势数据	trends_uint
+Mark
+
+#AllTable="$($MYSQL -u$DBuser -p$DBpass -ss -e 'USE zabbix; show tables;')"
+#BackupTable="$(echo "$AllTable" | grep -Evw $IgnoreTables)"
+BackupTable="$($MYSQL -u$DBuser -p$DBpass -ss -e 'USE zabbix; show tables;' | xargs -n1 | grep -Evw $IgnoreTables)"
+echo $BackupTable
+
+$MYSQLDUMP -u$DBuser -p$DBpass --default-character-set=utf8 --skip-opt --extended-insert=true --add-drop-table --create-options --disable-keys --quick --triggers=true --hex-blob --single-transaction --routines --set-gtid-purged=OFF zabbix $BackupTable | sudo tee zabbix.sql > /dev/null
