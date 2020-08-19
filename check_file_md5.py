@@ -48,9 +48,6 @@ def check_md5(md5file):
             print(line.strip() + ' data error')
 
 def main(argv):
-    user = ""
-    password = ""
-
     try:
         opts, args = getopt.getopt(argv, "hc:", ["help", "check="])
         #print(opts)
