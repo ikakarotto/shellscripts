@@ -31,6 +31,10 @@ dump_opts="--skip-opt --extended-insert=false --add-drop-table --create-options 
 # 只備份表數據
 # --skip-opt --extended-insert --quick --triggers=false --hex-blob --single-transaction --compact -t database_name table_name
 
+# sed 's/CREATE DEFINER=\`root\`@\`localhost\` PROCEDURE/CREATE PROCEDURE/g; s/CREATE DEFINER=\`root\`@\`10.%\` PROCEDURE/CREATE PROCEDURE/g; s#CREATE DEFINER=`root`@`10.%` PROCEDURE#CREATE PROCEDURE#g; s#CREATE DEFINER=`root`@`localhost` PROCEDURE#CREATE PROCEDURE#g'
+# sed -i 's@^---@-- -@g'
+# sed 's#CREATE .* PROCEDURE#CREATE PROCEDURE#g'
+
 
 # 記錄備份時間日誌
 writeLog ()
